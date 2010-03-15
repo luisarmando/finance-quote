@@ -37,7 +37,6 @@ use Finance::Quote::UserAgent;
 use HTTP::Request::Common;
 use HTML::TreeBuilder;
 use Encode;
-use Data::Dumper;
 
 use vars qw/@ISA @EXPORT @EXPORT_OK @EXPORT_TAGS
             $VERSION $TIMEOUT %MODULES %METHODS $AUTOLOAD
@@ -51,7 +50,7 @@ $YAHOO_CURRENCY_URL = "http://uk.finance.yahoo.com/q?s=";
                 currency_lookup/;
 @EXPORT_TAGS = ( all => [@EXPORT_OK]);
 
-$VERSION = '1.17';
+$VERSION = '1.16';
 
 $USE_EXPERIMENTAL_UA = 0;
 
@@ -167,12 +166,12 @@ sub new {
   if (!@reqmodules or $reqmodules[0] eq "-defaults") {
     shift(@reqmodules) if (@reqmodules);
     # Default modules
-    @modules = qw/AEX AIAHK ASEGR ASX BMONesbittBurns BSERO Bourso Cdnfundlibrary
-            Currencies Deka DWS FTPortfolios Fidelity FinanceCanada Fool HU
+    @modules = qw/AEX AIAHK ASEGR ASX BMONesbittBurns Bourso Cdnfundlibrary
+            Currencies Deka DWS FTPortfolios Fidelity FinanceCanada Fool
             GoldMoney HEX
             IndiaMutual LeRevenu ManInvestments Morningstar NZX Platinum SEB
             StockHouseCanada TSP TSX Tdefunds Tdwaterhouse Tiaacref Troweprice
-            Trustnet Union USFedBonds VWD ZA Cominvest Finanzpartner
+            Trustnet Union USFedBonds BRFedBonds VWD ZA Cominvest Finanzpartner
             Yahoo::Asia Yahoo::Australia Yahoo::Brasil Yahoo::Europe Yahoo::NZ
             Yahoo::USA/; }
 
@@ -803,7 +802,7 @@ Finance::Quote - Get stock and mutual fund quotes from various exchanges
 This module gets stock quotes from various internet sources, including
 Yahoo! Finance, Fidelity Investments, and the Australian Stock Exchange.
 There are two methods of using this module -- a functional interface
-that is depreciated, and an object-orientated method that provides
+that is deprecated, and an object-orientated method that provides
 greater flexibility and stability.
 
 With the exception of straight currency exchange rates, all information
