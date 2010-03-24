@@ -55,7 +55,9 @@ sub treasury {
 
     foreach my $symbol (@symbols) {
     		
-	    $response->content =~ /$symbol([^\$]*)\$\s*(([0-9]+)\.)?([0-9]+),([0-9]+)/;
+	    #$response->content =~ /$symbol([^\$]*)\$\s*(([0-9]+)\.)?([0-9]+),([0-9]+)/;
+	    $response->content =~ /$symbol([^\$]*)\$[^\$]*\$\s*(([0-9]+)\.)?([0-9]+),([0-9]+)/;
+	    
 
 	    my $price = $2 * 1000 + $4 + $5/100;
 
