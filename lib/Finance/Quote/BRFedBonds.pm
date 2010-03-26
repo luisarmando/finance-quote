@@ -56,7 +56,12 @@ sub treasury {
     foreach my $symbol (@symbols) {
     		
 	    #$response->content =~ /$symbol([^\$]*)\$\s*(([0-9]+)\.)?([0-9]+),([0-9]+)/;
-	    $response->content =~ /$symbol([^\$]*)\$[^\$]*\$\s*(([0-9]+)\.)?([0-9]+),([0-9]+)/;
+	    if($response->content =~ /$symbol([^\$]*)\$[^\$]*-/ {
+			    $info{$symbol, "success"} = 0;
+			    $info{$symbol, "errormsg"} = "Parse error";
+		}
+		else {
+	    $response->content =~ /$symbol([^\$]*)\$[^\$-]*\$\s*(([0-9]+)\.)?([0-9]+),([0-9]+)/;
 	    
 
 	    my $price = $2 * 1000 + $4 + $5/100;
@@ -70,7 +75,7 @@ sub treasury {
 	    $info{$symbol, "date"} = $date;
 	    $info{$symbol, "version"} = "0.1";
 	    $info{$symbol, "success"} = 1;
-
+    	}
 
     }
 
