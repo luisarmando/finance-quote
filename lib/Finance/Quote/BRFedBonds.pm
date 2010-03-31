@@ -56,7 +56,7 @@ sub treasury {
     foreach my $symbol (@symbols) {
     		
 	    #$response->content =~ /$symbol([^\$]*)\$\s*(([0-9]+)\.)?([0-9]+),([0-9]+)/;
-	    if($response->content =~ /$symbol([^\$]*)\$[^\$]*-/ {
+	    if($response->content =~ /$symbol([^\$]*)\$[^\$]*-/) {
 			    $info{$symbol, "success"} = 0;
 			    $info{$symbol, "errormsg"} = "Parse error";
 		}
