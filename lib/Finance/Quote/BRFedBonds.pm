@@ -45,7 +45,7 @@ sub treasury {
 
     return unless @symbols;
 
-    my $url = 'http://www.tesouro.fazenda.gov.br/tesouro_direto/consulta_titulos/consultatitulos.asp';
+    my $url = 'http://www3.tesouro.fazenda.gov.br/tesouro_direto/consulta_titulos/consultatitulos.asp';
 
     my $ua = $quoter->user_agent;
     my $response = $ua->request(GET $url);
